@@ -4,6 +4,8 @@ import entities.DB;
 import entities.DbException;
 import entities.Department;
 import entities.Seller;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,6 +27,11 @@ public class Program {
             e.printStackTrace();
 
         }
+
+        //Applying a new change
+        SellerDao sellerDao = DaoFactory.createSellerDao();
+        Seller seller = sellerDao.findById(3);
+        System.out.println(seller);
         System.out.println("-----------Testing Seller---------------");
         Seller sel = new Seller(1,"Pililiu","pil@gmail.com", new Date(),3.000, new Department(1, "xiii"));
         System.out.println(sel);
